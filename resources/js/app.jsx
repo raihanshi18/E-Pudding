@@ -1,11 +1,14 @@
-import './bootstrap';
-import { createRoot } from 'react-dom/client';
-import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login";
+import Register from "./Pages/Auth/Register";
 
-createInertiaApp({
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
-    setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />);
-    },
-});
+function App() {
+  return (
+    <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+    </Routes>
+  );
+}
+
+export default App;
