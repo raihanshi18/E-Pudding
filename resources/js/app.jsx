@@ -1,11 +1,14 @@
-import { BrowserRouter } from 'react-router-dom';
-import '../css/app.css';
-import './bootstrap';
-import ReactDOM from 'react-dom/client'
-import App from '../pages/App';
+import { Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login";
+import Register from "./Pages/Auth/Register";
 
-ReactDOM.createRoot(document.getElementById('app')).render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-)
+function App() {
+  return (
+    <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+    </Routes>
+  );
+}
+
+export default App;

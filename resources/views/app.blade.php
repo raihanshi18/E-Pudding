@@ -13,10 +13,9 @@
         <!-- Scripts -->
         @routes
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
-        
+        @vite(['resources/js/main.jsx',])
     </head>
     <body class="font-sans antialiased">
-        <div id="app"></div>
+        <div id="app" class="font-sans"></div>
     </body>
 </html>

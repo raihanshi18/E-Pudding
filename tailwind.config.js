@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -13,14 +14,9 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                plusjakarta: ['Plus Jakarta Sans']
             },
-            colors: {
-              Primary: "#FFF7E3",
-              Secondary: "#FFDEAF"
-            }
         },
     },
 
-    plugins: [],
+    plugins: [forms],
 };
