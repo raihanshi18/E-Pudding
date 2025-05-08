@@ -15,7 +15,7 @@
         @viteReactRefresh
         @vite(['resources/js/main.jsx',])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-Primary">
         <div id="app" class="font-sans"></div>
     </body>
 </html>

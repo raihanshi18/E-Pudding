@@ -1,4 +1,4 @@
-import { ProfileCircle, Lock } from 'iconsax-reactjs'
+import { ProfileCircle, Lock } from 'iconsax-react'
 import ImgForm from '../../assets/Image-Form.svg'
 
 const Login = () => {
