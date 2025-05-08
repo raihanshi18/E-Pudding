@@ -1,12 +1,12 @@
 import SideBar from '@/Components/SideBar'
 import React from 'react'
 
-const Dashboard = () => {
+const Menu = () => {
   return (
     <>
-      <SideBar/>
+        <SideBar/>
     </>
   )
 }
 
-export default Dashboard
+export default Menu

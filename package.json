@@ -22,7 +22,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
-        "iconsax-reactjs": "^0.0.8",
+        "iconsax-react": "^0.0.8",
         "react-router-dom": "^7.5.1"
     }
 }
