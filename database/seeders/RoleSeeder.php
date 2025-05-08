@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,8 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        role::query()->create(['name' => 'admin']);
+        role::query()->create(['name' => 'seller']);
+        role::query()->create(['name' => 'user']);
     }
 }
