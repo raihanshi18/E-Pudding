@@ -19,6 +19,10 @@ class AuthController extends Controller
 
             $user = User::whereEmail($request['email'])->first();
 
+            session([
+                'role' => $user->role->name
+            ]);
+
             if (!$user || !Hash::check($request['password'], $user->password)) {
                 return response([
                     "message" => "Wrong email or password"
