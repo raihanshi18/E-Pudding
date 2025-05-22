@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class pudding extends Model
 {
     protected $fillable = [
-        'seller_id',
+        'user_id',
         'name',
         'price',
         'flavor',

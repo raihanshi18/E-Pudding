@@ -8,7 +8,7 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'store']);
 });
-Route::middleware(['auth:sanctum', 'role:seller'])->prefix('pudding')->middleware('')->group(function () {
+Route::middleware(['auth:sanctum', 'role:seller'])->prefix('pudding')->group(function () {
     Route::post('/', [PuddingController::class, 'store']);
     Route::post('/{id}', [PuddingController::class, 'update']);
     Route::delete('/{id}', [PuddingController::class, 'destroy']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\pudding;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PuddingController extends Controller
 {
@@ -47,11 +48,11 @@ class PuddingController extends Controller
             $credentials = $request->validate([
                 'name' => 'required|string',
                 'price' => 'required|integer',
-                'flavor' => 'required|integer',
+                'flavor' => 'required|string',
                 'stock' => 'required|integer'
             ]);
 
-            $credentials['seller_id'] = auth()->id();
+            $credentials['user_id'] = Auth::id(); 
 
 
             $pudding = pudding::query()->create($credentials);
@@ -75,19 +76,12 @@ class PuddingController extends Controller
     public function show(string $id)
     {
         try {
-
             $pudding = pudding::find($id);
 
             if (!$pudding) {
                 return response([
                     'message' => 'Pudding not found'
                 ], 404);
-            }
-
-            if ($pudding->seller_id != auth()->user()->id) {
-                return response([
-                    'message' => 'You are not authorized to view this pudding'
-                ], 403);
             }
 
             return response([
@@ -126,7 +120,7 @@ class PuddingController extends Controller
                 ], 404);
             }
 
-            if ($pudding->seller_id != auth()->user()->id) {
+            if ($pudding->user_id != Auth::id()) {
                 return response([
                     'message' => 'You are not authorized to update this pudding'
                 ], 403);
@@ -169,7 +163,7 @@ class PuddingController extends Controller
                 ], 404);
             }
 
-            if ($pudding->seller_id != auth()->user()->id) {
+            if ($pudding->user_id != Auth::user()->id) {
                 return response([
                     'message' => 'You are not authorized to delete this pudding'
                 ], 403);
