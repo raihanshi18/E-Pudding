@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
-    Route::post('register', [AuthController::class, 'register']);
+    Route::post('register', [AuthController::class, 'store']);
 });
 Route::middleware(['auth:sanctum', 'role:seller'])->prefix('pudding')->middleware('')->group(function () {
     Route::post('/', [PuddingController::class, 'store']);

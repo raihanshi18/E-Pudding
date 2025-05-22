@@ -45,12 +45,14 @@ class PuddingController extends Controller
         try {
 
             $credentials = $request->validate([
-                'seller_id' => 'required',
                 'name' => 'required|string',
                 'price' => 'required|integer',
                 'flavor' => 'required|integer',
                 'stock' => 'required|integer'
             ]);
+
+            $credentials['seller_id'] = auth()->id();
+
 
             $pudding = pudding::query()->create($credentials);
 
