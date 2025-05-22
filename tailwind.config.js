@@ -19,7 +19,7 @@ export default {
                 Primary: "#FFF7E3",
                 Secondary: "#FFDEAF",
                 Tertiary: "#FFF2D0"
-            }
+            }   
         },
     },
 
