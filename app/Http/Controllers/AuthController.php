@@ -12,18 +12,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            $credential = $request->validate([
+            $credentials = $request->validate([
                 'email' => 'required|email|exists:users,email',
                 'password' => 'required',
             ]);
 
-            $user = User::whereEmail($request['email'])->first();
+            $user = User::whereEmail($credentials['email'])->first();
 
-            session([
-                'role' => $user->role->name
-            ]);
+            // session([
+            //     'role' => $user->role->name
+            // ]);
 
-            if (!$user || !Hash::check($request['password'], $user->password)) {
+            if (!$user || !Hash::check($credentials['password'], $user->password)) {
                 return response([
                     "message" => "Wrong email or password"
                 ], 401);
@@ -44,7 +44,11 @@ class AuthController extends Controller
     public function index()
     {
         try {
-            return User::all();
+            $user = User::all();
+            return response([
+                'message' => 'users retrieved successfully',
+                'data' => $user
+            ]);
         } catch (Exception $e) {
             return response([
                 'message' => 'Failed to retrieve users',
@@ -82,7 +86,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'role_id' => 3
+                'role_id' => 2
             ]);
 
             return response([
@@ -105,7 +109,7 @@ class AuthController extends Controller
             }
 
             $user->update($request->only(['name', 'email']));
-            
+
             return response(["message" => "User updated", "user" => $user]);
         } catch (Exception $e) {
             return response([

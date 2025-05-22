@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('flavor');
-            $table->integer('stock');
+            $table->integer('stock')->default(0);
             $table->integer('sold')->default(0);
             $table->timestamps();
         });
