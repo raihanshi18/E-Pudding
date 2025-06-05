@@ -6,19 +6,24 @@ import History from "./Pages/History";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
 import Setting from "./Pages/Setting";
+import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 
 function App() {
   return (
-    <Routes>
-        <Route path="/" element={<Dashboard />} />
+      <Routes>
+        <Route path="/" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/history" element={<History />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/setting" element={<Setting />} />
-    </Routes>
-  );
+      </Routes>
+  )
 }
 
 export default App;
