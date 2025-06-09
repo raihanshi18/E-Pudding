@@ -1,5 +1,6 @@
 import SideBar from "@/Components/SideBar";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     return (
@@ -8,8 +9,8 @@ const Cart = () => {
             <section className="flex flex-col min-h-[600px] ml-[300px] mr-[20px] my-6 max-sm:mx-[10px] max-sm:mb-[80px]">
                 <div className="h-screen flex flex-col items-center">
                     <div className="bg-Secondary h-full w-full flex rounded-xl p-5 shadow-lg">
-                        <div className=" w-[90%] rounded-l-lg flex justify-center items-top font-medium">
-                            <div className="bg-Tertiary w-[98%] h-[7%] flex rounded-lg shadow-sm">
+                        <div className="w-[90%] rounded-l-lg flex justify-center items-top font-medium pr-5">
+                            <div className="bg-Tertiary w-[100%] h-[7%] flex rounded-lg shadow-sm">
                                 <ul className="flex w-full h-full justify-between items-center pl-10 pr-20">
                                     <li>Product</li>
                                     <li>Price</li>
@@ -77,9 +78,11 @@ const Cart = () => {
                                                 </p>
                                             </div>
                                             <div>
-                                                <button className="bg-Secondary w-full h-10 mt-3 rounded-3xl shadow text-sm font-semibold text-black hover:bg-[#fcd3a5] transition-all duration-200 ease-in-out hover:shadow-md">
-                                                    Proceed to Checkout
-                                                </button>
+                                                <Link to="/checkout">
+                                                    <button className="bg-Secondary w-full h-16 mt-3 rounded-3xl shadow text-sm font-semibold text-black hover:bg-[#fcd3a5] transition-all duration-200 ease-in-out hover:shadow-md">
+                                                        Proceed to Checkout
+                                                    </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
