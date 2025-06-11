@@ -8,6 +8,7 @@ import { isLoggedIn } from '@/utils/auth'
 const Login = () => {
   const [isEmail, setIsEmail] = useState("")
   const [isPassword, setIsPassword] = useState("")
+  const [Error, setError] = useState("")
   const navigate = useNavigate()
 
   const UserLogin = async(e) => {
