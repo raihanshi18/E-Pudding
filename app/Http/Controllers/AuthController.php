@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -57,7 +58,7 @@ class AuthController extends Controller
         }
     }
 
-    public function show($id)
+    public function me($id)
     {
         try {
             $user = User::find($id);
@@ -135,5 +136,14 @@ class AuthController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Logged out successfully'
+        ]);
     }
 }

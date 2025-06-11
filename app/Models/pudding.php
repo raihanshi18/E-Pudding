@@ -13,6 +13,7 @@ class pudding extends Model
         'flavor',
         'stock',
         'sold',
+        'image'
     ];
 
     public function seller()
