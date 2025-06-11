@@ -22,7 +22,6 @@ const SideBar = () => {
             </nav>
         </div>
         <div className="flex flex-col max-sm:hidden">
-            <ButtonNav path="/setting"><Setting/><span>Setting</span></ButtonNav>
             <button onClick={handleLogout} className="flex justify-center items-center gap-2 mx-8 my-5 py-1.5 rounded-lg text-primary font-bold bg-[#f3e5c2] transition hover:bg-[#dfc890] max-sm:hidden"><span>Logout Account</span><Logout/></button>
         </div>
     </aside>
