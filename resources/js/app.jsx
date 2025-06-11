@@ -5,7 +5,6 @@ import Dashboard from "./Pages/Dashboard";
 import History from "./Pages/History";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
-import Setting from "./Pages/Setting";
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 
 function App() {
@@ -18,10 +17,21 @@ function App() {
         } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/setting" element={<Setting />} />
+        <Route path="/history" element={
+          <ProtectedRoute>
+            <History />
+          </ProtectedRoute>
+        } />
+        <Route path="/menu" element={
+          <ProtectedRoute>
+            <Menu />
+          </ProtectedRoute>
+        } />
+        <Route path="/cart" element={
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        } />
       </Routes>
   )
 }
