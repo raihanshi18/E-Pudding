@@ -22,7 +22,7 @@ const Register = () => {
       })
       navigate("/login")
     } catch (error) {
-      throw new error('register failed')
+      console.error('register failed')
     }
   }
 
