@@ -25,4 +25,5 @@ Route::middleware(['auth:sanctum', 'role:seller'])->prefix('pudding')->group(fun
 });
 
 Route::get('pudding/', [PuddingController::class, 'index']);
+Route::post('pudding/', [PuddingController::class, 'store']);
 Route::get('pudding/{id}', [PuddingController::class, 'show']);
