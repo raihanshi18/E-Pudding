@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class pudding extends Model
 {
     protected $fillable = [
-        'user_id',
         'name',
         'price',
         'flavor',
         'stock',
         'sold',
+        'image'
     ];
 
     public function seller()
