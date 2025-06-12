@@ -49,11 +49,14 @@ class PuddingController extends Controller
                 'name' => 'required|string',
                 'price' => 'required|integer',
                 'flavor' => 'required|string',
-                'stock' => 'required|integer'
+                'stock' => 'required|integer',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
 
-            $credentials['user_id'] = Auth::id(); 
-
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('puddings', 'public');
+                $credentials['image'] = $imagePath;
+            }
 
             $pudding = pudding::query()->create($credentials);
 
@@ -61,7 +64,6 @@ class PuddingController extends Controller
                 'message' => 'Pudding created successfully',
                 'data' => $pudding
             ], 201);
-
         } catch (Exception $e) {
             return response([
                 'message' => 'Failed to create pudding',
@@ -88,7 +90,6 @@ class PuddingController extends Controller
                 'message' => 'Pudding retrieved successfully',
                 'data' => $pudding
             ], 200);
-
         } catch (Exception $e) {
             return response([
                 'message' => 'Failed to retrieve pudding',
@@ -131,6 +132,7 @@ class PuddingController extends Controller
                 'price' => 'integer|min:0',
                 'flavor' => 'string|max:255',
                 'stock' => 'integer|min:0',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
 
             $pudding->update($credentials);
@@ -139,7 +141,6 @@ class PuddingController extends Controller
                 'message' => 'Pudding updated successfully',
                 'data' => $pudding
             ], 200);
-
         } catch (Exception $e) {
             return response([
                 'message' => 'Failed to update pudding',
@@ -174,7 +175,6 @@ class PuddingController extends Controller
             return response([
                 'message' => 'Pudding deleted successfully'
             ], 200);
-
         } catch (Exception $e) {
             return response([
                 'message' => 'Failed to delete pudding',
