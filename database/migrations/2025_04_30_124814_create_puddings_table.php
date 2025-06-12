@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('puddings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->integer('price');
             $table->string('flavor');
+            $table->string('image');
             $table->integer('stock')->default(0);
             $table->integer('sold')->default(0);
             $table->timestamps();
